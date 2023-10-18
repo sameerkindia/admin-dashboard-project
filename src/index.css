@@ -1,13 +1,504 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --color-primery: blue;
+  --color-primery-dark: darkblue;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.3s;
+
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+html {
+  font-size: 62.5;
+}
+
+.layout {
+  height: 100vh;
+  width: 100vw;
+
+  display: grid;
+  grid-template-columns: 20% auto;
+  overflow: auto;
+}
+
+.main {
+  background-color: gainsboro;
+  padding: 3rem;
+  overflow-y: auto;
+}
+
+.main-nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: var(--color-primery);
+  color: white;
+  font-size: 1.8rem;
+  padding: 2rem;
+  flex-basis: 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100vh;
+  transform: translateX(0);
+}
+
+.nav-open {
+  transform: translateX(-100%);
+}
+
+.side-btn {
+  display: none;
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+  color: var(--color-primery-dark);
+  cursor: pointer;
+  z-index: 15;
+}
+
+.logo-box {
+  font-size: 3rem;
+  padding: 2rem;
+  display: flex;
+  align-items: end;
+  justify-content: space-evenly;
+}
+
+.logo-box span {
+  transform: translateY(0.5rem);
+}
+
+.link-box {
+  list-style: none;
+  text-align: center;
+}
+
+.link-box li {
+  padding: 0.8rem;
+  font-size: 1.4rem;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.link-box li:hover {
+  background-color: var(--color-primery-dark);
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+}
+
+.active li {
+  background-color: var(--color-primery-dark);
+  text-decoration: none;
+}
+
+.hide-icon {
+  margin-left: auto;
+}
+
+.active .hide-icon {
+  display: none;
+}
+
+.nav-user {
+  background-color: var(--color-primery-dark);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-top: auto;
+  border-radius: 1rem;
+
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  font-size: 1.3rem;
+}
+
+.nav-user-img {
+  width: 3rem;
+  height: 3rem;
+  background-color: #cf5e9b;
+  border-radius: 50%;
+}
+
+.nav-user span {
+  font-size: 1rem;
+  color: lightgray;
+}
+
+.nav-user-icon {
+  margin-left: auto;
+}
+
+/* ///////////////////////////////////////////////////////// */
+/* ///////////////////////////////////////////////////////// */
+/* ///////////////////////////////////////////////////////// */
+/* Dashboard Page  */
+
+.dashboard-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-nav label {
+  position: relative;
+  color: gray;
+}
+
+.dashboard-nav input {
+  border-radius: 1rem;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem;
+  padding-left: 4rem;
+}
+.dashboard-nav label span {
+  left: 5px;
+  top: 7px;
+  position: absolute;
+}
+.dashborad-content {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.dashborad-content > div {
+  width: 100%;
+}
+.dashboard-info {
+  display: flex;
+  gap: inherit;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.info-box {
+  background-color: white;
+  border-radius: 1rem;
+  min-width: fit-content;
+  flex-grow: 1;
+}
+.info-box-inner {
+  display: flex;
+  gap: 1em;
+  padding: 1rem;
+  align-items: center;
+}
+.info-emoji {
+  --h: 8rem;
+  height: var(--h);
+  width: var(--h);
+  border-radius: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--h);
+}
+.info-emoji svg {
+  width: 50%;
+  height: 50%;
+}
+
+.info-text {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.info-sub {
+  font-size: 1.5rem;
+  color: gray;
+}
+
+.info-main {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.info-p {
+  font-size: 1.6rem;
+}
+
+.info-p span {
+  display: flex;
+  align-items: center;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+.bg-green {
+  background-color: #bfefbf;
+  color: #175d17;
+}
+.bg-purple {
+  background-color: #e2d0f3;
+  color: #4f1f7e;
+}
+.bg-blue {
+  background-color: #bcbcef;
+  color: #22218a;
+}
+.bg-pink {
+  background-color: #ffb7de;
+  color: #cf5e9b;
+}
+
+/* /////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////// */
+/* Overview */
+
+.overview-container {
+  display: grid;
+  grid-template-columns: 70% auto;
+  gap: inherit;
+}
+
+.overview-bar-section {
+  background-color: white;
+  border-radius: 1rem;
+
+  padding: 2rem;
+}
+
+.bar-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bar-text p {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.bar-text span {
+  color: gray;
+  font-size: 1.5rem;
+}
+
+.bar-text select {
+  background-color: lightgray;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.overview-pai-section {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.pai-text {
+  margin-bottom: 2rem;
+}
+
+.pai-text p {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+.pai-text span {
+  color: gray;
+  font-size: 1.5rem;
+}
+
+.pai-chart {
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0px 1px 1rem rgba(0, 0, 0, 0.1);
+  margin: auto;
+  margin-top: 5rem;
+}
+
+/* ////////////////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////////////////// */
+/* Product container */
+
+.product-container {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.product-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.product-nav p {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.product-nav-search {
+  font-size: 2rem;
+  position: relative;
+  margin-right: 1rem;
+}
+.product-nav-search span {
+  font-size: 2rem;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+}
+.product-nav-search input {
+  padding: 0.5rem;
+  padding-left: 3rem;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: lightgray;
+}
+
+.product-nav select {
+  background-color: lightgray;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+.product-info-bar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  color: gray;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid lightgray;
+}
+
+.product-info-bar div {
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+.product-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+}
+
+.product-body-text {
+  width: 100%;
+}
+
+.product-body .title {
+  width: 100%;
+  height: min-content;
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-wrap: pretty;
+}
+
+.product-body .description {
+  font-size: 1.5rem;
+  color: lightgray;
+  text-wrap: wrap;
+}
+
+.product-body-info {
+  display: flex;
+  gap: 2rem;
+}
+
+.product-body-img {
+  background-color: #cf5e9b;
+  width: 7rem;
+  height: 5rem;
+}
+
+.product-body-details {
+  width: 33%;
+
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.5rem;
+}
+
+.product-body-details .bold {
+  font-weight: 600;
+}
+
+.res-container {
+  background-color: #22218a;
+}
+
+@media (max-width: 1000px) {
+  .layout {
+    display: block;
+  }
+
+  .main-nav {
+    display: block;
+    width: 40%;
+    position: fixed;
+    z-index: 10;
+  }
+  .side-btn {
+    display: block;
+  }
+}
+
+@media (max-width: 850px) {
+  html {
+    font-size: 50%;
+  }
+
+  .overview-container {
+    display: block;
+  }
+  .overview-bar-section {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .main {
+    padding: 1rem;
+  }
+  .product-nav div {
+    display: flex;
+    margin-top: 1rem;
+  }
+
+  .product-info-bar div {
+    width: max-content;
+  }
+
+  .product-body-details {
+    width: max-content;
+    gap: 1rem;
+    justify-content: space-between;
+  }
 }
